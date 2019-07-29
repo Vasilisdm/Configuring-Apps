@@ -7,7 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.App">
+      <PrivateAssets Condition="'%(PackageReference.Version)' == ''">all</PrivateAssets>
+      <Publish Condition="'%(PackageReference.Version)' == ''">true</Publish>
+    </PackageReference>
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
     <PackageReference Include="System.Net.Http" Version="4.3.4" />
   </ItemGroup>
@@ -16,5 +19,6 @@
     <Folder Include="Controllers\" />
     <Folder Include="Views\" />
     <Folder Include="Views\Home\" />
+    <Folder Include="Infrastructure\" />
   </ItemGroup>
 </Project>
