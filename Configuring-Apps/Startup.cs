@@ -27,7 +27,14 @@ namespace Configuring_Apps
             app.UseMiddleware<BrowserTypeMiddleware>();
             app.UseMiddleware<ShortCircuitMiddleware>();
             app.UseMiddleware<ContentMiddleware>();
-            //app.UseMvcWithDefaultRoute();
+
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "default",
+                    template: "{Controller=Home}/{action=Index}/{id?}"
+                );
+            });
         }
     }
 }
