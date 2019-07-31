@@ -31,6 +31,12 @@ namespace Configuring_Apps
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            if ((Configuration.GetSection("ShortCircuitMiddleware")?.GetValue<bool>("EnableBrowserShortCircuit")).Value)
+            {
+                app.UseMiddleware<BrowserTypeMiddleware>();
+                app.UseMiddleware<ShortCircuitMiddleware>();
+            }
+
             if (env.IsDevelopment())
             {
                 //app.UseMiddleware<ErrorMiddleware>();
