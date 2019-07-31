@@ -28,5 +28,11 @@ namespace Configuring_Apps.Controllers
                 });
             }
         }
+
+        public ViewResult Error() => View(nameof(Index),
+            new Dictionary<string, string>
+            {
+                ["Message"] = "This is an error action"
+            });
     }
 }
