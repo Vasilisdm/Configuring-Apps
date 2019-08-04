@@ -31,6 +31,12 @@ namespace Configuring_Apps
                         config.AddCommandLine(args);
                     }
                  })
+                .ConfigureLogging((hostingContext, logging) => {
+                    logging.AddConfiguration(
+                        hostingContext.Configuration.GetSection("Logging"));
+                    logging.AddConsole();
+                    logging.AddDebug();
+                })
                 .UseIISIntegration()
                 .UseStartup<Startup>();
         }
