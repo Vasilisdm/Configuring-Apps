@@ -44,7 +44,7 @@ namespace Configuring_Apps
                 {
                     options.ValidateScopes = context.HostingEnvironment.IsDevelopment();
                 })
-                .UseStartup<Startup>();
+                .UseStartup(nameof(Startup));
         }
     }
 }
